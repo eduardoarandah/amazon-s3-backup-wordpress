@@ -3,20 +3,28 @@
 - Backup database and files fully
 - Backup uploads folder incrementally, only last and current month
 
+# Requisites
+
+- command aws in server working (run `aws configure`)
+- bucket and user
+
 # Configure
 
 Clone the repo and edit variables in .env file
 
 ```sh
-git clone https://github.com/eduardoarandah/amazon-s3-backup-wordpress.git ~/scripts
-cd ~/scripts
+mkdir -p ~/scripts
+git clone https://github.com/eduardoarandah/amazon-s3-backup-wordpress.git ~/scripts/backup
+cd ~/scripts/backup
 cp .env.example .env
+
+chmod +x ~/scripts/backup/backup.sh
 ```
 
 # Run backup
 
 ```sh
-~/scripts/backup.sh
+~/scripts/backup/backup.sh
 ```
 
 # Cron job example
@@ -24,7 +32,7 @@ cp .env.example .env
 ```
 * * * * * cd ~/webapps/XXXX/public && wp cron event run --due-now >/dev/null 2>&1
 0 3 * * * cd ~/webapps/XXXX/public && wp core update && wp core update-db
-15 3 * * * ~/scripts/backup.sh
+15 3 * * * ~/scripts/backup/backup.sh
 ```
 
 # To sync all uploads folder, run once:
