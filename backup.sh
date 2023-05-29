@@ -1,5 +1,6 @@
 #!/bin/bash
 set uexo
+alias aws='/usr/local/bin/aws'
 
 # check ~/scripts/backup/.env file exists
 if [ ! -f ~/scripts/backup/.env ]; then

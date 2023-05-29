@@ -7,6 +7,7 @@
 
 - command aws in server working (run `aws configure`)
 - bucket and user
+- check `which aws` is the same as backup.sh
 
 # Configure
 
@@ -24,7 +25,7 @@ chmod +x ~/scripts/backup/backup.sh
 # Run backup
 
 ```sh
-~/scripts/backup/backup.sh
+/bin/bash ~/scripts/backup/backup.sh
 ```
 
 # Cron job example
@@ -32,7 +33,7 @@ chmod +x ~/scripts/backup/backup.sh
 ```
 * * * * * cd ~/webapps/XXXX/public && wp cron event run --due-now >/dev/null 2>&1
 0 3 * * * cd ~/webapps/XXXX/public && wp core update && wp core update-db
-15 3 * * * ~/scripts/backup/backup.sh
+15 3 * * * /bin/bash ~/scripts/backup/backup.sh | tee -a ~/backup.log 2>&1
 ```
 
 # To sync all uploads folder, run once:
