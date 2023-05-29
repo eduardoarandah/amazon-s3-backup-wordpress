@@ -33,8 +33,10 @@ chmod +x ~/scripts/backup/backup.sh
 ```
 * * * * * cd ~/webapps/XXXX/public && wp cron event run --due-now >/dev/null 2>&1
 0 3 * * * cd ~/webapps/XXXX/public && wp core update && wp core update-db
-15 3 * * * /bin/bash ~/scripts/backup/backup.sh | tee -a ~/backup.log 2>&1
+15 3 * * * /bin/bash ~/scripts/backup/backup.sh
 ```
+
+(you can debug with  /bin/bash ~/scripts/backup/backup.sh | tee -a ~/backup.log 2>&1)
 
 # To sync all uploads folder, run once:
 
