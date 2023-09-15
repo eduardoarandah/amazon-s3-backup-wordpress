@@ -1,6 +1,8 @@
 #!/bin/bash
 set uexo
-alias aws='/usr/local/bin/aws'
+
+# path for aws binary
+export PATH=/usr/local/bin:$PATH
 
 # check ~/scripts/backup/.env file exists
 if [ ! -f ~/scripts/backup/.env ]; then
